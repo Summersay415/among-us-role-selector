@@ -1,0 +1,444 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://main.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends SpinBox
+
+var imp
+
+func _ready():
+	max_value = 20
+	imp = $\"../impostors_selector\"
+
+func _process(delta):
+	var some = int(imp.value)
+	match some:
+		1:
+			min_value = 4
+		2:
+			min_value = 7
+		3:
+			min_value = 9
+		4:
+			min_value = 12
+		5:
+			min_value = 15
+	if (min_value > value):
+		value = min_value
+"
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 26
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 2 )
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="setup" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="setup"]
+anchor_right = 1.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Among Us Role Picker
+by Summersay415"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostors" type="Label" parent="setup"]
+anchor_right = 1.0
+margin_left = 127.588
+margin_top = 62.991
+margin_right = -531.412
+margin_bottom = 89.991
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "предателей:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmates" type="Label" parent="setup"]
+anchor_right = 1.0
+margin_left = 164.149
+margin_top = 112.33
+margin_right = -532.851
+margin_bottom = 139.33
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "игроков:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cdmeting" type="Label" parent="setup"]
+anchor_right = 1.0
+margin_left = 351.918
+margin_top = 62.6019
+margin_right = -203.082
+margin_bottom = 89.6019
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Перезарядка собрания:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cnfrmjcts" type="Label" parent="setup"]
+anchor_right = 1.0
+margin_left = 349.248
+margin_top = 110.656
+margin_right = -205.752
+margin_bottom = 137.656
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Роль при изгнании:"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cnfrmjctsV" type="CheckBox" parent="setup"]
+anchor_right = 1.0
+margin_left = 599.698
+margin_top = 98.9541
+margin_right = -184.302
+margin_bottom = 125.954
+rect_scale = Vector2( 2, 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/hover_pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+pressed = true
+
+[node name="impostors_selector" type="SpinBox" parent="setup"]
+margin_left = 272.588
+margin_top = 57.991
+margin_right = 334.588
+margin_bottom = 95.991
+theme = ExtResource( 1 )
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+rounded = true
+
+[node name="cd_selector" type="SpinBox" parent="setup"]
+margin_left = 602.294
+margin_top = 57.991
+margin_right = 664.294
+margin_bottom = 95.991
+theme = ExtResource( 1 )
+max_value = 60.0
+value = 30.0
+rounded = true
+
+[node name="crewmates_selector" type="SpinBox" parent="setup"]
+margin_left = 272.388
+margin_top = 106.172
+margin_right = 334.388
+margin_bottom = 144.172
+theme = ExtResource( 1 )
+min_value = 4.0
+max_value = 20.0
+value = 4.0
+rounded = true
+script = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="setup"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "Далее"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="GridContainer" parent="setup"]
+margin_left = 142.0
+margin_top = 166.0
+margin_right = 643.0
+margin_bottom = 373.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shhhhhh" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="shhhhhh"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -31.5
+margin_right = 153.0
+margin_bottom = 31.5
+custom_fonts/font = SubResource( 9 )
+text = "ТСССССССССС!"
+align = 1
+valign = 1
+
+[node name="nextPlayer" type="Label" parent="shhhhhh"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.33
+margin_top = 31.2374
+margin_right = 155.67
+margin_bottom = 94.2374
+custom_fonts/font = SubResource( 10 )
+text = "Следующий:"
+align = 1
+valign = 1
+
+[node name="next" type="Button" parent="shhhhhh"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "Далее"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="done" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="done"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -31.5
+margin_right = 153.0
+margin_bottom = 31.5
+custom_fonts/font = SubResource( 9 )
+text = "Готово!"
+align = 1
+valign = 1
+
+[node name="next" type="Button" parent="done"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "Далее"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostor" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minus" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 18.0
+margin_right = 153.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="impostor" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 84.0
+margin_right = 153.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Предатель"
+align = 1
+valign = 1
+
+[node name="mates" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = 72.0
+margin_right = 175.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "убей всех!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="next" type="Button" parent="impostor"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "Далее"
+
+[node name="crewmate" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plus" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 18.0
+margin_right = 153.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "+"
+align = 1
+valign = 1
+
+[node name="crewmate" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 90.0
+margin_right = 180.0
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "Член экипажа"
+align = 1
+valign = 1
+
+[node name="impostors" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = 72.0
+margin_right = 175.0
+margin_bottom = 143.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "Обнаружено Х предателей среди нас"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="next" type="Button" parent="crewmate"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "Далее"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="setup/crewmates_selector" to="." method="setup_players"]
