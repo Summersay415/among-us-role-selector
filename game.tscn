@@ -96,18 +96,19 @@ margin_left = -162.0
 margin_top = -84.0
 margin_right = -1.0
 margin_bottom = -34.0
-text = "Экипажа"
+text = "game.ewvo.crew"
 
 [node name="end_game_impasta" type="Button" parent="selectAct"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 2.60202
+margin_left = 3.0
 margin_top = -84.0
-margin_right = 163.602
+margin_right = 163.0
 margin_bottom = -34.0
-text = "Предателей"
+text = "game.ewvo.impostors"
+clip_text = true
 
 [node name="end_game_with_victory_of" type="Label" parent="selectAct"]
 anchor_left = 0.5
@@ -118,7 +119,7 @@ margin_left = -94.0
 margin_top = -139.0
 margin_right = 95.0
 margin_bottom = -91.0
-text = "Закончить игру победой"
+text = "game.ewvo"
 align = 1
 valign = 1
 autowrap = true

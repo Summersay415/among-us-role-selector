@@ -50,18 +50,18 @@ func show_role():
 	if players[current] in impostors_array:
 		$impostor.show()
 		$crewmate.hide()
-		var players_impostors = "ты"
+		var players_impostors = tr("menu.you")
 		for i in range(0, players.size()):
 			if players[i] == players[current]:
 				continue
 			if players[i] in impostors_array:
 				players_impostors = players_impostors + ", " + players[i] 
-		$impostor/mates.text = "Предатели: " + players_impostors
+		$impostor/mates.text = tr("menu.mates") + players_impostors
 	else:
 		$impostor.hide()
 		$crewmate.show()
 	current += 1
-	$shhhhhh/nextPlayer.text = "Следующий:" + players[clamp(current, 0, players.size())]
+	$shhhhhh/nextPlayer.text = tr("menu.select.next") + players[clamp(current, 0, players.size())]
 
 func _ready():
 	randomize()
@@ -77,7 +77,7 @@ func start_view():
 	$shhhhhh.show()
 	crewmates = $setup/crewmates_selector.value - $setup/impostors_selector.value
 	impostors = $setup/impostors_selector.value
-	$crewmate/impostors.text = "Обнаружено " + str(impostors) + " предателей среди нас"
+	$crewmate/impostors.text = tr("menu.select.impostors1") + str(impostors) + tr("menu.select.impostors2")
 	var plc = $setup/crewmates_selector.value
 	players = []
 	for i in range(0, $setup/players.get_child_count()):
@@ -101,6 +101,6 @@ func start_view():
 	G.impostors = cacheImp
 	G.confrmejects = $setup/cnfrmjctsV.pressed
 	G.meetingcd = $setup/cd_selector.value
-	players.append("всё")
+	players.append(tr("menu.all"))
 	current = 0
-	$shhhhhh/nextPlayer.text = "Следующий:" + players[current]
+	$shhhhhh/nextPlayer.text = tr("menu.select.next") + players[current]

@@ -83,7 +83,7 @@ margin_right = 214.0
 margin_bottom = -6.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.0666667, 0, 1 )
-text = "ПОБЕДА"
+text = "end.victory"
 align = 1
 valign = 1
 clip_text = true
@@ -131,5 +131,5 @@ margin_left = -161.954
 margin_top = -82.2269
 margin_right = -31.9541
 margin_bottom = -25.2269
-text = "заново"
+text = "end.restart"
 [connection signal="pressed" from="button" to="." method="restart"]

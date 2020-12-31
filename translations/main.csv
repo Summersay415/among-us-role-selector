@@ -1,0 +1,31 @@
+id,en,ru
+menu.impostors,impostors,предателей
+menu.players,players,игроков
+menu.emcd,meeting cooldown,перезарядка собрания
+menu.ce,confirm ejects,роль при изгнании
+menu.next,next,далее
+menu.sh,shhhhhhh!,тссссссссс!
+menu.select.next,next player:,следующий:
+menu.select.impostor,impostor,предатель
+menu.select.crewmate,crewmate,член экипажа
+menu.you,you,ты
+menu.mates,impostors:,предатели:
+menu.select.impostors1,There are ,Обнаружено 
+menu.select.impostors2, impostors among us, предателей среди нас
+menu.all,End of role selecting,всё
+menu.done,done,готово!
+game.ewvo,end with victory of,закончить победой
+game.ewvo.crew,crewmate,экипажа
+game.ewvo.impostors,impostors,предателей
+voting.select_dead,select dead,выбери мёртвых
+voting.wii,who is impostor?,кто же предатель?
+voting.votes,Votes:,голосует:
+voting.result.we, was ejected., был(а) изгнан(а).
+voting.result.wai, was An Impostor., оказался предателем.
+voting.result.wnai, was not An Impostor, не был(а) предателем.
+voting.result.remains, impostors remain., предателей осталось.
+end.victory,victory,Победа
+end.restart,restart,Заново
+tutorial,TODO,TODO
+voting.result.skip,No one was ejected(Skipped).,Принято решение пропустить голосование.
+voting.result.tie,No one was ejected(Tie).,"Мы не смогли принять единого решения, голосование пропущено."

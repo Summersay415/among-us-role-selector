@@ -72,7 +72,7 @@ func voting():
 	le.size_flags_horizontal = SIZE_EXPAND_FILL
 	pl.add_child(le)
 	for i in range(0, players.size()):
-		wiv.text = "Голосует:" + players[i]
+		wiv.text = tr("voting.votes") + players[i]
 		yield(self, "vote_next")
 	var cv = votes.duplicate(true)
 	cv.sort()
@@ -96,26 +96,26 @@ func result():
 	var an = $result/anim
 	if isTie:
 		if G.confrmejects:
-			text.text = "Мы не смогли принять единого решения, голосование пропущено.\n" + str(impasta.size()) + " предателей осталось"
+			text.text = tr("voting.result.tie") + " \n" + str(impasta.size()) + tr("voting.result.remains")
 		else:
-			text.text = "Мы не смогли принять единого решения, голосование пропущено."
+			text.text = tr("voting.result.tie")
 		return
 	if isSkip:
 		if G.confrmejects:
-			text.text = "Принято решение пропустить голосование.\n" + str(impasta.size()) + " предателей осталось"
+			text.text = tr("voting.result.skip") + " \n" + str(impasta.size()) + tr("voting.result.remains")
 		else:
-			text.text = "Принято решение пропустить голосование."
+			text.text = tr("voting.result.skip")
 		return
 	var nameOfEjected = players[voted_out]
 	var isImp = false
 	if nameOfEjected in impasta:
 		isImp = true
 	if !G.confrmejects:
-		text.text = nameOfEjected + " был(а) изгнан."
+		text.text = nameOfEjected + tr("voting.result.we")
 	else:
 		if isImp:
-			text.text = nameOfEjected + " оказал(а)ся предателем.\n" + str(impasta.size() - 1) + " предателей осталось"
+			text.text = nameOfEjected + tr("voting.result.wai") + " \n" + str(impasta.size() - 1) + tr("voting.result.remains")
 			an.play("impostor_eject")
 		else:
-			text.text = nameOfEjected + " не был(а) предателем.\n" + str(impasta.size()) + " предателей осталось"
+			text.text = nameOfEjected + tr("voting.result.wnai") + " \n" + str(impasta.size()) + tr("voting.result.remains")
 			an.play("crewmate_eject")

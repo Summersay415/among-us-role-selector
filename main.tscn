@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://art0.png" type="Texture" id=4]
 [ext_resource path="res://impostor.png" type="Texture" id=5]
 [ext_resource path="res://crewmate.png" type="Texture" id=6]
+[ext_resource path="res://locale.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
@@ -105,8 +106,9 @@ margin_right = -531.412
 margin_bottom = 89.991
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "предателей:"
+text = "menu.impostors"
 align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,8 +121,9 @@ margin_right = -532.851
 margin_bottom = 139.33
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "игроков:"
+text = "menu.players"
 align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,8 +136,9 @@ margin_right = -203.082
 margin_bottom = 89.6019
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Перезарядка собрания:"
+text = "menu.emcd"
 align = 2
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,7 +151,7 @@ margin_right = -205.752
 margin_bottom = 137.656
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Роль при изгнании:"
+text = "menu.ce"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,11 +159,10 @@ __meta__ = {
 
 [node name="cnfrmjctsV" type="CheckBox" parent="setup"]
 anchor_right = 1.0
-margin_left = 599.698
-margin_top = 98.9541
-margin_right = -184.302
-margin_bottom = 125.954
-rect_scale = Vector2( 2, 2 )
+margin_left = 600.794
+margin_top = 105.35
+margin_right = -167.206
+margin_bottom = 137.35
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -218,7 +221,7 @@ margin_left = -197.0
 margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
-text = "Далее"
+text = "menu.next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -231,6 +234,30 @@ margin_bottom = 373.0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="en" type="Button" parent="setup"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -73.0
+margin_right = 123.0
+margin_bottom = -43.0
+text = "English"
+script = ExtResource( 7 )
+l = "en"
+
+[node name="ru" type="Button" parent="setup"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 11.2587
+margin_top = -36.7524
+margin_right = 124.259
+margin_bottom = -6.75244
+text = "русский"
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -253,9 +280,10 @@ margin_top = -31.5
 margin_right = 153.0
 margin_bottom = 31.5
 custom_fonts/font = SubResource( 9 )
-text = "ТСССССССССС!"
+text = "menu.sh"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="nextPlayer" type="Label" parent="shhhhhh"]
 anchor_left = 0.5
@@ -280,7 +308,7 @@ margin_left = -197.0
 margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
-text = "Далее"
+text = "menu.next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -315,7 +343,7 @@ margin_top = -31.5
 margin_right = 153.0
 margin_bottom = 31.5
 custom_fonts/font = SubResource( 9 )
-text = "Готово!"
+text = "menu.done"
 align = 1
 valign = 1
 
@@ -328,7 +356,7 @@ margin_left = -197.0
 margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
-text = "Далее"
+text = "menu.next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -363,9 +391,10 @@ margin_right = 153.0
 margin_bottom = 147.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Предатель"
+text = "menu.select.impostor"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="mates" type="Label" parent="impostor"]
 anchor_left = 0.5
@@ -396,7 +425,7 @@ margin_left = -197.0
 margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
-text = "Далее"
+text = "menu.next"
 
 [node name="impostor2" type="TextureRect" parent="impostor"]
 margin_left = 295.0
@@ -436,9 +465,10 @@ margin_right = 180.0
 margin_bottom = 153.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "Член экипажа"
+text = "menu.select.crewmate"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="impostors" type="Label" parent="crewmate"]
 anchor_left = 0.5
@@ -466,7 +496,7 @@ margin_left = -197.0
 margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
-text = "Далее"
+text = "menu.next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
