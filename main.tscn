@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
+[ext_resource path="res://art0.png" type="Texture" id=4]
+[ext_resource path="res://impostor.png" type="Texture" id=5]
+[ext_resource path="res://crewmate.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 21
@@ -87,7 +90,7 @@ anchor_right = 1.0
 margin_bottom = 59.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Among Us Role Picker
+text = "Among Us Role Selector
 by Summersay415"
 align = 1
 __meta__ = {
@@ -166,6 +169,9 @@ custom_styles/normal = SubResource( 7 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="impostors_selector" type="SpinBox" parent="setup"]
 margin_left = 272.588
@@ -279,6 +285,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="art0" type="TextureRect" parent="shhhhhh"]
+margin_left = 371.973
+margin_top = 75.3753
+margin_right = 435.973
+margin_bottom = 139.375
+rect_scale = Vector2( 4.06788, 4.02848 )
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="done" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
@@ -357,7 +375,7 @@ anchor_bottom = 0.5
 margin_left = -175.0
 margin_top = 72.0
 margin_right = 175.0
-margin_bottom = 143.0
+margin_bottom = 209.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "убей всех!"
@@ -365,6 +383,9 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="next" type="Button" parent="impostor"]
 anchor_left = 1.0
@@ -376,6 +397,14 @@ margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
 text = "Далее"
+
+[node name="impostor2" type="TextureRect" parent="impostor"]
+margin_left = 295.0
+margin_top = 130.0
+margin_right = 359.0
+margin_bottom = 194.0
+rect_scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
 
 [node name="crewmate" type="Control" parent="."]
 visible = false
@@ -438,6 +467,17 @@ margin_top = -84.0
 margin_right = -39.0
 margin_bottom = -34.0
 text = "Далее"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmate2" type="TextureRect" parent="crewmate"]
+margin_left = 289.661
+margin_top = 134.765
+margin_right = 353.661
+margin_bottom = 198.765
+rect_scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

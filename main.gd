@@ -20,6 +20,7 @@ func setup_players(val):
 	for i in range(0, val):
 		var le = LineEdit.new()
 		le.name = "pl" + str(i)
+		le.text = "player" + str(i + 1)
 		le.size_flags_horizontal = SIZE_EXPAND_FILL
 		$setup/players.add_child(le)
 
@@ -54,17 +55,13 @@ func show_role():
 			if players[i] == players[current]:
 				continue
 			if players[i] in impostors_array:
-				var cacheStr = str(players[i])
-				cacheStr.erase(cacheStr.length() - 1, 1)
-				players_impostors = players_impostors + ", " + cacheStr 
+				players_impostors = players_impostors + ", " + players[i] 
 		$impostor/mates.text = "Предатели: " + players_impostors
 	else:
 		$impostor.hide()
 		$crewmate.show()
 	current += 1
-	var cacheStr = str(players[clamp(current, 0, players.size())])
-	cacheStr.erase(cacheStr.length() - 1, 1)
-	$shhhhhh/nextPlayer.text = "Следующий:" + cacheStr
+	$shhhhhh/nextPlayer.text = "Следующий:" + players[clamp(current, 0, players.size())]
 
 func _ready():
 	randomize()
@@ -86,34 +83,24 @@ func start_view():
 	for i in range(0, $setup/players.get_child_count()):
 		var nameObj = $setup/players.get_child(i)
 		var name = nameObj.text
-		players.append(name + str(i))
+		if name.strip_edges().empty():
+			name = "noName"
+		while name in players:
+			name = name + "|"
+		players.append(name)
+	randomize()
 	players.shuffle()
 	impostors_array = range(0, impostors)
 	for i in range(0, impostors):
 		impostors_array[i] = players[i]
-	players.shuffle()
-	players.shuffle()
-	players.shuffle()
 	randomize()
 	players.shuffle()
 	var cachePlayers = players.duplicate(true)
-	for l in range(0, cachePlayers.size()):
-		var cacheStr = cachePlayers[l]
-		cacheStr.erase(cacheStr.length() - 1, 1)
-		cachePlayers[l] = cacheStr
-	print(cachePlayers)
 	G.players = cachePlayers
 	var cacheImp = impostors_array.duplicate(true)
-	for d in range(0, cacheImp.size()):
-		var cacheStr = cacheImp[d]
-		cacheStr.erase(cacheStr.length() - 1, 1)
-		cacheImp[d] = cacheStr
-	print(cacheImp)
 	G.impostors = cacheImp
 	G.confrmejects = $setup/cnfrmjctsV.pressed
 	G.meetingcd = $setup/cd_selector.value
-	players.append("всё1")
+	players.append("всё")
 	current = 0
-	var cacheStr = str(players[current])
-	cacheStr.erase(cacheStr.length() - 1, 1)
-	$shhhhhh/nextPlayer.text = "Следующий:" + cacheStr
+	$shhhhhh/nextPlayer.text = "Следующий:" + players[current]

@@ -87,16 +87,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="end_game" type="Button" parent="selectAct"]
+[node name="end_game_crew" type="Button" parent="selectAct"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -162.5
-margin_top = -84.4611
-margin_right = 162.5
-margin_bottom = -34.4611
-text = "Закончить игру"
+margin_left = -162.0
+margin_top = -84.0
+margin_right = -1.0
+margin_bottom = -34.0
+text = "Экипажа"
+
+[node name="end_game_impasta" type="Button" parent="selectAct"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 2.60202
+margin_top = -84.0
+margin_right = 163.602
+margin_bottom = -34.0
+text = "Предателей"
+
+[node name="end_game_with_victory_of" type="Label" parent="selectAct"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -94.0
+margin_top = -139.0
+margin_right = 95.0
+margin_bottom = -91.0
+text = "Закончить игру победой"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 [connection signal="pressed" from="selectAct/emerg" to="." method="meeting"]
 [connection signal="pressed" from="selectAct/report" to="." method="report"]
-[connection signal="pressed" from="selectAct/end_game" to="." method="end_game"]
+[connection signal="pressed" from="selectAct/end_game_crew" to="." method="win_crew"]
+[connection signal="pressed" from="selectAct/end_game_impasta" to="." method="win_impasta"]

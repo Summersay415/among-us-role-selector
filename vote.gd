@@ -2,13 +2,26 @@ extends Control
 
 var players = []
 var impasta = []
+var votes = []
+var isTie = false
+var isSkip = false
+var voted_out = 0
+signal vote_next
+
+func vote(i):
+	votes[i] += 1
+	emit_signal("vote_next")
 
 func _ready():
 	players = G.players.duplicate(true)
 	impasta = G.impostors.duplicate(true)
 	yield(select_dead(), "completed")
+	yield(voting(), "completed")
+	result()
 
 func end():
+	if !isSkip and !isTie:
+		remove_player(players[voted_out], null, false)
 	get_tree().change_scene("res://game.tscn")
 
 func remove_player(na, le, remove_le):
@@ -19,10 +32,8 @@ func remove_player(na, le, remove_le):
 		G.impostors = impasta.duplicate(true)
 	if G.impostors.size() <= 0:
 		get_tree().change_scene("res://crew_win.tscn")
-		return
 	if players.size() <= G.impostors.size() * 2:
 		get_tree().change_scene("res://impostors_win.tscn")
-		return
 	if remove_le:
 		le.queue_free()
 
@@ -41,5 +52,70 @@ func select_dead():
 	$select_dead.hide()
 	$voting.show()
 
-func vote():
-	pass
+func voting():
+	var pl = $voting/players
+	var wiv : Label = $voting/votes
+	votes.resize(players.size() + 1)
+	for t in range(0, votes.size()):
+		votes[t] = 0
+	for i in range(0, players.size()):
+		var le = Button.new()
+		le.name = "pl" + str(i)
+		le.text = players[i]
+		le.connect("pressed", self, "vote", [i])
+		le.size_flags_horizontal = SIZE_EXPAND_FILL
+		pl.add_child(le)
+	var le = Button.new()
+	le.name = "skip"
+	le.text = "Skip Vote"
+	le.connect("pressed", self, "vote", [votes.size() - 1])
+	le.size_flags_horizontal = SIZE_EXPAND_FILL
+	pl.add_child(le)
+	for i in range(0, players.size()):
+		wiv.text = "Голосует:" + players[i]
+		yield(self, "vote_next")
+	var cv = votes.duplicate(true)
+	cv.sort()
+	var s = cv.size()
+	if cv[s - 1] == cv[s - 2]:
+		isTie = true
+		return
+	var itd = votes.find(cv[s - 1])
+	if itd == -1:
+		printerr("WTF")
+		return
+	if int(itd) == int(votes.size() - 1):
+		isSkip = true
+		return
+	voted_out = itd
+
+func result():
+	$voting.hide()
+	$result.show()
+	var text = $result/result
+	var an = $result/anim
+	if isTie:
+		if G.confrmejects:
+			text.text = "Мы не смогли принять единого решения, голосование пропущено.\n" + str(impasta.size()) + " предателей осталось"
+		else:
+			text.text = "Мы не смогли принять единого решения, голосование пропущено."
+		return
+	if isSkip:
+		if G.confrmejects:
+			text.text = "Принято решение пропустить голосование.\n" + str(impasta.size()) + " предателей осталось"
+		else:
+			text.text = "Принято решение пропустить голосование."
+		return
+	var nameOfEjected = players[voted_out]
+	var isImp = false
+	if nameOfEjected in impasta:
+		isImp = true
+	if !G.confrmejects:
+		text.text = nameOfEjected + " был(а) изгнан."
+	else:
+		if isImp:
+			text.text = nameOfEjected + " оказал(а)ся предателем.\n" + str(impasta.size() - 1) + " предателей осталось"
+			an.play("impostor_eject")
+		else:
+			text.text = nameOfEjected + " не был(а) предателем.\n" + str(impasta.size()) + " предателей осталось"
+			an.play("crewmate_eject")
