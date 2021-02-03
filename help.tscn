@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+func _ready():
+	connect(\"pressed\", get_tree(), \"change_scene\", [\"res://main.tscn\"])
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+font_data = ExtResource( 2 )
+
+[node name="help" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_ik_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="back" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -103.369
+margin_top = 13.2691
+margin_right = -11.3687
+margin_bottom = 45.2691
+text = "tutorial.back"
+clip_text = true
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -194.0
+margin_right = 194.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "tutorial.title"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tut" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -372.998
+margin_top = -170.522
+margin_right = 370.002
+margin_bottom = 209.478
+size_flags_horizontal = 15
+size_flags_vertical = 15
+text = "tutorial.part1"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

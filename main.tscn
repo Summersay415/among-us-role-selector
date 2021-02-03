@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
@@ -6,59 +6,18 @@
 [ext_resource path="res://art0.png" type="Texture" id=4]
 [ext_resource path="res://impostor.png" type="Texture" id=5]
 [ext_resource path="res://crewmate.png" type="Texture" id=6]
-[ext_resource path="res://locale.gd" type="Script" id=7]
+[ext_resource path="res://setup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 21
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="GDScript" id=8]
-script/source = "extends SpinBox
-
-var imp
-
-func _ready():
-	max_value = 20
-	imp = $\"../impostors_selector\"
-
-func _process(delta):
-	var some = int(imp.value)
-	match some:
-		1:
-			min_value = 4
-		2:
-			min_value = 7
-		3:
-			min_value = 9
-		4:
-			min_value = 12
-		5:
-			min_value = 15
-	if (min_value > value):
-		value = min_value
-"
-
-[sub_resource type="DynamicFont" id=9]
 size = 50
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=2]
 size = 26
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=3]
 size = 25
 font_data = ExtResource( 2 )
 
@@ -79,188 +38,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="setup" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="Label" parent="setup"]
-anchor_right = 1.0
-margin_bottom = 59.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Among Us Role Selector
-by Summersay415"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="impostors" type="Label" parent="setup"]
-anchor_right = 1.0
-margin_left = 127.588
-margin_top = 62.991
-margin_right = -531.412
-margin_bottom = 89.991
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "menu.impostors"
-align = 2
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="crewmates" type="Label" parent="setup"]
-anchor_right = 1.0
-margin_left = 164.149
-margin_top = 112.33
-margin_right = -532.851
-margin_bottom = 139.33
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "menu.players"
-align = 2
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cdmeting" type="Label" parent="setup"]
-anchor_right = 1.0
-margin_left = 351.918
-margin_top = 62.6019
-margin_right = -203.082
-margin_bottom = 89.6019
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "menu.emcd"
-align = 2
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cnfrmjcts" type="Label" parent="setup"]
-anchor_right = 1.0
-margin_left = 349.248
-margin_top = 110.656
-margin_right = -205.752
-margin_bottom = 137.656
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "menu.ce"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="cnfrmjctsV" type="CheckBox" parent="setup"]
-anchor_right = 1.0
-margin_left = 600.794
-margin_top = 105.35
-margin_right = -167.206
-margin_bottom = 137.35
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/hover_pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-pressed = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="impostors_selector" type="SpinBox" parent="setup"]
-margin_left = 272.588
-margin_top = 57.991
-margin_right = 334.588
-margin_bottom = 95.991
-theme = ExtResource( 1 )
-min_value = 1.0
-max_value = 5.0
-value = 1.0
-rounded = true
-
-[node name="cd_selector" type="SpinBox" parent="setup"]
-margin_left = 602.294
-margin_top = 57.991
-margin_right = 664.294
-margin_bottom = 95.991
-theme = ExtResource( 1 )
-max_value = 60.0
-value = 30.0
-rounded = true
-
-[node name="crewmates_selector" type="SpinBox" parent="setup"]
-margin_left = 272.388
-margin_top = 106.172
-margin_right = 334.388
-margin_bottom = 144.172
-theme = ExtResource( 1 )
-min_value = 4.0
-max_value = 20.0
-value = 4.0
-rounded = true
-script = SubResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="next" type="Button" parent="setup"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -197.0
-margin_top = -84.0
-margin_right = -39.0
-margin_bottom = -34.0
-text = "menu.next"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="players" type="GridContainer" parent="setup"]
-margin_left = 142.0
-margin_top = 166.0
-margin_right = 643.0
-margin_bottom = 373.0
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
-columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="en" type="Button" parent="setup"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -73.0
-margin_right = 123.0
-margin_bottom = -43.0
-text = "English"
-script = ExtResource( 7 )
-l = "en"
-
-[node name="ru" type="Button" parent="setup"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 11.2587
-margin_top = -36.7524
-margin_right = 124.259
-margin_bottom = -6.75244
-text = "русский"
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="setup" parent="." instance=ExtResource( 7 )]
 
 [node name="shhhhhh" type="Control" parent="."]
 visible = false
@@ -279,7 +57,7 @@ margin_left = -153.0
 margin_top = -31.5
 margin_right = 153.0
 margin_bottom = 31.5
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 text = "menu.sh"
 align = 1
 valign = 1
@@ -294,7 +72,7 @@ margin_left = -150.33
 margin_top = 31.2374
 margin_right = 155.67
 margin_bottom = 94.2374
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 2 )
 text = "Следующий:"
 align = 1
 valign = 1
@@ -314,10 +92,14 @@ __meta__ = {
 }
 
 [node name="art0" type="TextureRect" parent="shhhhhh"]
-margin_left = 371.973
-margin_top = 75.3753
-margin_right = 435.973
-margin_bottom = 139.375
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -129.0
+margin_right = 32.0
+margin_bottom = -65.0
 rect_scale = Vector2( 4.06788, 4.02848 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 4 )
@@ -342,7 +124,7 @@ margin_left = -153.0
 margin_top = -31.5
 margin_right = 153.0
 margin_bottom = 31.5
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 text = "menu.done"
 align = 1
 valign = 1
@@ -376,11 +158,14 @@ margin_left = -153.0
 margin_top = 18.0
 margin_right = 153.0
 margin_bottom = 81.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "-"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="impostor" type="Label" parent="impostor"]
 anchor_left = 0.5
@@ -389,7 +174,7 @@ margin_left = -153.0
 margin_top = 84.0
 margin_right = 153.0
 margin_bottom = 147.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "menu.select.impostor"
 align = 1
@@ -405,7 +190,7 @@ margin_left = -175.0
 margin_top = 72.0
 margin_right = 175.0
 margin_bottom = 209.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "убей всех!"
 align = 1
@@ -428,12 +213,19 @@ margin_bottom = -34.0
 text = "menu.next"
 
 [node name="impostor2" type="TextureRect" parent="impostor"]
-margin_left = 295.0
-margin_top = 130.0
-margin_right = 359.0
-margin_bottom = 194.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -106.751
+margin_top = -104.081
+margin_right = -42.751
+margin_bottom = -40.0813
 rect_scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="crewmate" type="Control" parent="."]
 visible = false
@@ -450,7 +242,7 @@ margin_left = -153.0
 margin_top = 18.0
 margin_right = 153.0
 margin_bottom = 81.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "+"
 align = 1
@@ -463,12 +255,15 @@ margin_left = -180.0
 margin_top = 90.0
 margin_right = 180.0
 margin_bottom = 153.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "menu.select.crewmate"
 align = 1
 valign = 1
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="impostors" type="Label" parent="crewmate"]
 anchor_left = 0.5
@@ -479,7 +274,7 @@ margin_left = -175.0
 margin_top = 72.0
 margin_right = 175.0
 margin_bottom = 143.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "Обнаружено Х предателей среди нас"
 align = 1
@@ -502,13 +297,30 @@ __meta__ = {
 }
 
 [node name="crewmate2" type="TextureRect" parent="crewmate"]
-margin_left = 289.661
-margin_top = 134.765
-margin_right = 353.661
-margin_bottom = 198.765
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.086
+margin_top = -106.751
+margin_right = -44.0858
+margin_bottom = -42.751
 rect_scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 8 )
+is_real = true
+interstitial_id = "ca-app-pub-4032583867683331/6835646139"
+max_ad_content_rate = "T"
 [connection signal="value_changed" from="setup/crewmates_selector" to="." method="setup_players"]
+[connection signal="pressed" from="setup/help" to="." method="help"]
+[connection signal="file_selected" from="setup/save" to="." method="save_settings"]
+[connection signal="file_selected" from="setup/load" to="." method="load_settings"]
+[connection signal="pressed" from="setup/save_settings" to="." method="save_popup"]
+[connection signal="pressed" from="setup/load_settings" to="." method="load_popup"]
+
+[editable path="setup"]

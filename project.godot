@@ -9,37 +9,19 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "HBoxContainer",
-"class": "ContributorClass",
+"base": "Node",
+"class": "AdMob",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+"path": "res://admob-lib/admob.gd"
 } ]
 _global_script_class_icons={
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
-"RepositoryItem": ""
+"AdMob": "res://admob-lib/icon.png"
 }
 
 [application]
 
 config/name="Among Us Role Selector"
-run/main_scene="res://main.tscn"
+run/main_scene="res://start.tscn"
 boot_splash/image="res://icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.764706, 0, 0, 1 )
@@ -48,10 +30,6 @@ config/icon="res://icon.png"
 [autoload]
 
 G="*res://global.gd"
-PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [debug]
 
@@ -64,14 +42,6 @@ window/size/width=800
 window/size/height=480
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "github-integration" )
-
-[gdnative]
-
-singletons=[  ]
 
 [importer_defaults]
 
@@ -114,4 +84,5 @@ name_casing=2
 quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
+environment/default_clear_color=Color( 0.52549, 0.52549, 0.52549, 1 )
 environment/default_environment="res://default_env.tres"

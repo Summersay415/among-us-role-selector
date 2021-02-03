@@ -7,12 +7,51 @@ enum State {
 	RESTART
 }
 
+var shown = false
 var crewmates
 var impostors
 var players = [0]
 var current = 0
 var state = State.SELECT
 var impostors_array = []
+
+func save_popup():
+	$setup/save.popup_centered()
+
+func load_popup():
+	$setup/load.popup_centered()
+
+func save_settings(path):
+	var cfg = ConfigFile.new()
+	# Imps, crewms, metcd and confej
+	cfg.set_value("base", "impostors", $setup/impostors_selector.value)
+	cfg.set_value("base", "players", $setup/crewmates_selector.value)
+	cfg.set_value("base", "cdmeeting", $setup/cd_selector.value)
+	cfg.set_value("base", "ce", $setup/cnfrmjctsV.pressed)
+	#player names
+	for i in range(0, $setup/crewmates_selector.value):
+		var name = $setup/players.get_child(i).text
+		cfg.set_value("names", "player" + str(i), name)
+	cfg.save(path)
+
+func load_settings(path):
+	var cfg = ConfigFile.new()
+	cfg.load(path)
+	$setup/impostors_selector.value = cfg.get_value("base", "impostors")
+	$setup/crewmates_selector.value = cfg.get_value("base", "players")
+	$setup/cd_selector.value = cfg.get_value("base", "cdmeeting")
+	$setup/cnfrmjctsV.pressed = cfg.get_value("base", "ce")
+	for i in $setup/players.get_children():
+		i.queue_free()
+	for i in range(0, $setup/crewmates_selector.value):
+		var le = LineEdit.new()
+		le.name = "pl" + str(i)
+		le.text = cfg.get_value("names", "player" + str(i))
+		le.size_flags_horizontal = SIZE_EXPAND_FILL
+		$setup/players.add_child(le)
+
+func help():
+	get_tree().change_scene("res://help.tscn")
 
 func setup_players(val):
 	for i in $setup/players.get_children():
@@ -63,7 +102,22 @@ func show_role():
 	current += 1
 	$shhhhhh/nextPlayer.text = tr("menu.select.next") + players[clamp(current, 0, players.size())]
 
+func si():
+	if shown:
+		return
+	shown = true
+	$AdMob.show_interstitial()
+
 func _ready():
+	var cfg = ConfigFile.new()
+	cfg.load("user://ads.cfg")
+	if cfg.get_value("ads", "child", false):
+		$AdMob.child_directed = true
+		$AdMob.max_ad_content_rate = "G"
+	if !cfg.get_value("ads", "per", false):
+		$AdMob.is_personalized = false
+	$AdMob.connect("interstitial_loaded", self, "si")
+	$AdMob.load_interstitial()
 	randomize()
 	$impostor/next.connect("pressed", self, "process_next_button_callback")
 	$crewmate/next.connect("pressed", self, "process_next_button_callback")
