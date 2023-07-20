@@ -1,0 +1,359 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://locale.gd" type="Script" id=2]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends SpinBox
+
+var imp
+
+func _ready():
+	max_value = 20
+	imp = $\"../impostors_selector\"
+
+func _process(delta):
+	var some = int(imp.value)
+	match some:
+		1:
+			min_value = 4
+		2:
+			min_value = 7
+		3:
+			min_value = 9
+		4:
+			min_value = 12
+		5:
+			min_value = 15
+	if (min_value > value):
+		value = min_value
+"
+
+[node name="setup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Among Us Role Selector
+by Summersay415"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostors" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -273.5
+margin_top = -176.5
+margin_right = -132.5
+margin_bottom = -149.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "menu.impostors"
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmates" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -235.5
+margin_top = -130.5
+margin_right = -132.5
+margin_bottom = -103.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "menu.players"
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cdmeting" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -177.5
+margin_right = 195.5
+margin_bottom = -150.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "menu.emcd"
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cnfrmjcts" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.5
+margin_top = -131.5
+margin_right = 195.5
+margin_bottom = -104.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "menu.ce"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cnfrmjctsV" type="CheckBox" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 202.0
+margin_top = -132.0
+margin_right = 234.0
+margin_bottom = -100.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/hover_pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostors_selector" type="SpinBox" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -183.0
+margin_right = -68.0
+margin_bottom = -145.0
+theme = ExtResource( 1 )
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+rounded = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cd_selector" type="SpinBox" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 201.0
+margin_top = -183.0
+margin_right = 263.0
+margin_bottom = -145.0
+theme = ExtResource( 1 )
+max_value = 60.0
+value = 30.0
+rounded = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmates_selector" type="SpinBox" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -135.0
+margin_right = -68.0
+margin_bottom = -97.0
+theme = ExtResource( 1 )
+min_value = 4.0
+max_value = 20.0
+value = 4.0
+rounded = true
+script = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -82.0
+margin_right = -39.0
+margin_bottom = -32.0
+text = "menu.next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.5
+margin_top = -90.0
+margin_right = 250.5
+margin_bottom = 117.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="en" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.9449
+margin_top = -70.1652
+margin_right = 123.945
+margin_bottom = -40.1652
+text = "English"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+l = "en"
+
+[node name="ru" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 11.2587
+margin_top = -36.7524
+margin_right = 124.259
+margin_bottom = -6.75244
+text = "русский"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="help" type="Button" parent="."]
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 39.0
+margin_bottom = 44.0
+text = "?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -376.0
+margin_top = -217.5
+margin_right = 376.0
+margin_bottom = 217.5
+popup_exclusive = true
+window_title = "menu.save_file"
+resizable = true
+dialog_hide_on_ok = true
+dialog_autowrap = true
+mode_overrides_title = false
+access = 1
+filters = PoolStringArray( "*.preset" )
+current_dir = "user://"
+current_file = "preset0"
+current_path = "user://preset0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -376.0
+margin_top = -217.5
+margin_right = 376.0
+margin_bottom = 217.5
+popup_exclusive = true
+window_title = "menu.load_file"
+resizable = true
+dialog_hide_on_ok = true
+dialog_autowrap = true
+mode_overrides_title = false
+mode = 0
+access = 1
+filters = PoolStringArray( "*.preset" )
+current_dir = "user://"
+current_path = "user://"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_settings" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -158.0
+margin_top = -76.0
+margin_right = -6.0
+margin_bottom = -14.0
+text = "menu.save"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load_settings" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -76.0
+margin_right = 158.0
+margin_bottom = -14.0
+text = "menu.load"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

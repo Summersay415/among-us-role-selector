@@ -1,0 +1,334 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://main.gd" type="Script" id=3]
+[ext_resource path="res://art0.png" type="Texture" id=4]
+[ext_resource path="res://impostor.png" type="Texture" id=5]
+[ext_resource path="res://crewmate.png" type="Texture" id=6]
+[ext_resource path="res://setup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://help.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 2 )
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="setup" parent="." instance=ExtResource( 7 )]
+
+[node name="save" parent="setup" index="14"]
+rect_min_size = Vector2( 170, 59.5 )
+
+[node name="load" parent="setup" index="15"]
+rect_min_size = Vector2( 170, 59.5 )
+
+[node name="shhhhhh" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="shhhhhh"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -31.5
+margin_right = 153.0
+margin_bottom = 31.5
+custom_fonts/font = SubResource( 1 )
+text = "menu.sh"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="nextPlayer" type="Label" parent="shhhhhh"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.33
+margin_top = 31.2374
+margin_right = 155.67
+margin_bottom = 94.2374
+custom_fonts/font = SubResource( 2 )
+text = "Следующий:"
+align = 1
+valign = 1
+
+[node name="next" type="Button" parent="shhhhhh"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "menu.next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="art0" type="TextureRect" parent="shhhhhh"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -129.0
+margin_right = 32.0
+margin_bottom = -65.0
+rect_scale = Vector2( 4.06788, 4.02848 )
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="done" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="done"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -31.5
+margin_right = 153.0
+margin_bottom = 31.5
+custom_fonts/font = SubResource( 1 )
+text = "menu.done"
+align = 1
+valign = 1
+
+[node name="next" type="Button" parent="done"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "menu.next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostor" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minus" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 18.0
+margin_right = 153.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostor" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 84.0
+margin_right = 153.0
+margin_bottom = 147.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "menu.select.impostor"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="mates" type="Label" parent="impostor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = 72.0
+margin_right = 175.0
+margin_bottom = 209.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "убей всех!"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="impostor"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "menu.next"
+
+[node name="impostor2" type="TextureRect" parent="impostor"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -106.751
+margin_top = -104.081
+margin_right = -42.751
+margin_bottom = -40.0813
+rect_scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmate" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plus" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -153.0
+margin_top = 18.0
+margin_right = 153.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "+"
+align = 1
+valign = 1
+
+[node name="crewmate" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 90.0
+margin_right = 180.0
+margin_bottom = 153.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "menu.select.crewmate"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostors" type="Label" parent="crewmate"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = 72.0
+margin_right = 175.0
+margin_bottom = 143.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Обнаружено Х предателей среди нас"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="next" type="Button" parent="crewmate"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -197.0
+margin_top = -84.0
+margin_right = -39.0
+margin_bottom = -34.0
+text = "menu.next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crewmate2" type="TextureRect" parent="crewmate"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.086
+margin_top = -106.751
+margin_right = -44.0858
+margin_bottom = -42.751
+rect_scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdMob" type="Node" parent="."]
+
+[node name="help" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="back" parent="help" index="1"]
+script = null
+
+[connection signal="value_changed" from="setup/crewmates_selector" to="." method="setup_players"]
+[connection signal="pressed" from="setup/help" to="help" method="show"]
+[connection signal="file_selected" from="setup/save" to="." method="save_settings"]
+[connection signal="file_selected" from="setup/load" to="." method="load_settings"]
+[connection signal="pressed" from="setup/save_settings" to="." method="save_popup"]
+[connection signal="pressed" from="setup/load_settings" to="." method="load_popup"]
+[connection signal="pressed" from="help/back" to="help" method="hide"]
+
+[editable path="setup"]
+[editable path="help"]

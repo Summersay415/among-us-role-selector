@@ -1,0 +1,270 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://vote.gd" type="Script" id=1]
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://crewmate.png" type="Texture" id=4]
+[ext_resource path="res://impostor.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "crewmate_eject"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.0009, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 359.0, 0.0, 101.721 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -145.369, 197.325 ), Vector2( 203.024, 204 ), Vector2( 662.209, 193.321 ), Vector2( 1049.31, 186.647 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "impostor_eject"
+length = 3.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.0009, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 359.0, 0.0, 101.721 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -145.369, 197.325 ), Vector2( 203.024, 204 ), Vector2( 662.209, 193.321 ), Vector2( 1049.31, 186.647 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[node name="vote" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select_dead" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="select_dead"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -267.0
+margin_right = 267.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "voting.select_dead"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="GridContainer" parent="select_dead"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -128.0
+margin_right = 220.0
+margin_bottom = 112.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="select_dead"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -78.0
+margin_right = -21.0
+margin_bottom = -21.0
+text = "menu.next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="voting" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="voting"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -267.0
+margin_right = 267.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 1 )
+text = "voting.wii"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="votes" type="Label" parent="voting"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -268.0
+margin_top = 52.0
+margin_right = 266.0
+margin_bottom = 83.0
+text = "Голосует:варовьапвчрь"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="GridContainer" parent="voting"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -110.0
+margin_right = 220.0
+margin_bottom = 147.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="result" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="result" type="Label" parent="result"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -34.0
+margin_right = 267.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 2 )
+text = "Я не был предателем"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button" type="Button" parent="result"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -78.0
+margin_right = -21.0
+margin_bottom = -21.0
+text = "menu.next"
+
+[node name="anim" type="AnimationPlayer" parent="result"]
+anims/crewmate_eject = SubResource( 3 )
+anims/impostor_eject = SubResource( 4 )
+
+[node name="player" type="TextureRect" parent="result"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -145.369
+margin_top = 197.325
+margin_right = -881.369
+margin_bottom = -218.674
+rect_scale = Vector2( 3, 3 )
+rect_pivot_offset = Vector2( 31.1079, 32.4203 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="result/button" to="." method="end"]

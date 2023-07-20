@@ -1,0 +1,83 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Among Us Role Selector"
+run/main_scene="res://start.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.764706, 0, 0, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+G="*res://global.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
+gdscript/completion/autocomplete_setters_and_getters=true
+
+[display]
+
+window/size/width=800
+window/size/height=480
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[gdnative]
+
+singletons=[  ]
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[locale]
+
+translations=PoolStringArray( "res://translations/main.en.translation", "res://translations/main.ru.translation" )
+locale_filter=[ 0, [  ] ]
+
+[node]
+
+name_casing=2
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
+environment/default_clear_color=Color( 0.52549, 0.52549, 0.52549, 1 )
+environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

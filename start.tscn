@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://start.gd" type="Script" id=2]
+
+[node name="start" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="privacy" type="PopupDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 150.0
+popup_exclusive = true
+
+[node name="tit" type="Label" parent="privacy"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -163.0
+margin_top = -112.0
+margin_right = 165.0
+margin_bottom = 23.0
+text = "для запуска игры необходимо принять политику конфидициальности
+
+to start game you must accept privacy policy"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="yes" type="Button" parent="privacy"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -61.0
+margin_right = 64.5
+margin_bottom = -17.0
+text = "принять/accept"
+
+[node name="here" type="LinkButton" parent="privacy"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -94.0
+margin_top = 12.0
+margin_right = 94.0
+margin_bottom = 35.0
+text = "see here/смотри здесь"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="age" type="PopupDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 150.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enter_your_age" type="Label" parent="age"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_top = -99.0
+margin_right = 88.0
+margin_bottom = -55.0
+text = "введите свой возраст
+Enter your age"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="age" type="SpinBox" parent="age"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.5
+margin_top = -17.5
+margin_right = 52.5
+margin_bottom = 17.5
+max_value = 99.0
+rounded = true
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="submit" type="Button" parent="age"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -61.0
+margin_right = 83.0
+margin_bottom = -17.0
+text = "Потвердить/submit"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="privacy/yes" to="." method="accept"]
+[connection signal="pressed" from="privacy/here" to="." method="see"]
+[connection signal="pressed" from="age/submit" to="." method="is_child_age"]
