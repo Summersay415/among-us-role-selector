@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://meteorite_strike.png" type="Texture" id=3]
 [ext_resource path="res://impostor.png" type="Texture" id=4]
 [ext_resource path="res://win.gd" type="Script" id=5]
+[ext_resource path="res://sounds/defeat.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "vict"
@@ -49,9 +50,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -71,8 +69,8 @@ margin_left = -212.0
 margin_top = -81.0
 margin_right = 214.0
 margin_bottom = -6.0
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.0666667, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "end.victory"
 align = 1
 valign = 1
@@ -122,4 +120,9 @@ margin_top = -82.2269
 margin_right = -31.9541
 margin_bottom = -25.2269
 text = "end.restart"
+
+[node name="defeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
 [connection signal="pressed" from="button" to="." method="restart"]

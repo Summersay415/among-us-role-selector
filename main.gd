@@ -7,7 +7,7 @@ enum State {
 	RESTART
 }
 
-var shown = false
+var ad_loaded = false
 var crewmates
 var impostors
 var players = [0]
@@ -52,10 +52,8 @@ func load_settings():
 		le.name = "pl" + str(i)
 		le.text = cfg.get_value("names", "player" + str(i))
 		le.size_flags_horizontal = SIZE_EXPAND_FILL
+		le.rect_min_size = Vector2(0, 30)
 		$setup/players.add_child(le)
-
-func help():
-	get_tree().change_scene("res://help.tscn")
 
 func setup_players(val):
 	for i in $setup/players.get_children():
@@ -65,6 +63,7 @@ func setup_players(val):
 		le.name = "pl" + str(i)
 		le.text = "player" + str(i + 1)
 		le.size_flags_horizontal = SIZE_EXPAND_FILL
+		le.rect_min_size = Vector2(0, 30)
 		$setup/players.add_child(le)
 
 func process_next_button_callback():
@@ -81,7 +80,10 @@ func process_next_button_callback():
 		$impostor.hide()
 		$shhhhhh.show()
 		state = State.VIEW_PAUSE
+		$role_reveal.stop()
 	if state == State.RESTART:
+		if ad_loaded:
+			$AdMob.show_interstitial()
 		get_tree().change_scene("res://game.tscn")
 
 func show_role():
@@ -103,13 +105,12 @@ func show_role():
 	else:
 		$impostor.hide()
 		$crewmate.show()
+	$role_reveal.play(0)
 	current += 1
 	$shhhhhh/nextPlayer.text = tr("menu.select.next") + players[clamp(current, 0, players.size())]
 
 func si():
-	if shown:
-		return
-	shown = true
+	ad_loaded = true
 	$AdMob.show_interstitial()
 
 func _ready():

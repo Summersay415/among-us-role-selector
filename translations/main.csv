@@ -35,3 +35,4 @@ menu.save,Save,сохранить
 menu.load,load,загрузить
 menu.load_file,load preset file,загрузить файл настроек
 menu.save_file,save preset file,сохранить файл настроек
+voting.skip_vote,skip vote,пропустить голосвание

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/voted.ogg-691cddd2b0d4a5c56a2307fff9a5c4a9.oggstr"
+
+[deps]
+
+source_file="res://sounds/voted.ogg"
+dest_files=[ "res://.import/voted.ogg-691cddd2b0d4a5c56a2307fff9a5c4a9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

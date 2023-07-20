@@ -10,6 +10,7 @@ signal vote_next
 
 func vote(i):
 	votes[i] += 1
+	$voted.play(0)
 	emit_signal("vote_next")
 
 func _ready():
@@ -20,11 +21,11 @@ func _ready():
 	result()
 
 func end():
-	if !isSkip and !isTie:
-		remove_player(players[voted_out], null, false)
+	if not isSkip and not isTie:
+		remove_player(players[voted_out])
 	get_tree().change_scene("res://game.tscn")
 
-func remove_player(na, le, remove_le):
+func remove_player(na, le = null, remove_le = false):
 	players.erase(na)
 	G.players = players.duplicate(true)
 	if na in impasta:
@@ -37,6 +38,10 @@ func remove_player(na, le, remove_le):
 	if remove_le:
 		le.queue_free()
 
+func kill_player(na, le, remove_le):
+	remove_player(na, le, remove_le)
+	$kill.play(0)
+
 func select_dead():
 	var butt = $select_dead/button
 	var pl = $select_dead/players
@@ -45,8 +50,9 @@ func select_dead():
 		le.name = "pl" + str(i)
 		le.size_flags_horizontal = SIZE_EXPAND_FILL
 		le.text = players[i]
+		le.rect_min_size = Vector2(0, 30)
 		le.toggle_mode = true
-		le.connect("pressed", self, "remove_player", [players[i], le, true])
+		le.connect("pressed", self, "kill_player", [players[i], le, true])
 		pl.add_child(le)
 	yield(butt, "pressed")
 	$select_dead.hide()
@@ -63,13 +69,15 @@ func voting():
 		le.name = "pl" + str(i)
 		le.text = players[i]
 		le.connect("pressed", self, "vote", [i])
+		le.rect_min_size = Vector2(0, 30)
 		le.size_flags_horizontal = SIZE_EXPAND_FILL
 		pl.add_child(le)
 	var le = Button.new()
 	le.name = "skip"
-	le.text = "Skip Vote"
+	le.text = tr("voting.skip_vote")
 	le.connect("pressed", self, "vote", [votes.size() - 1])
 	le.size_flags_horizontal = SIZE_EXPAND_FILL
+	le.rect_min_size = Vector2(0, 30)
 	pl.add_child(le)
 	for i in range(0, players.size()):
 		wiv.text = tr("voting.votes") + players[i]
@@ -92,6 +100,7 @@ func voting():
 func result():
 	$voting.hide()
 	$result.show()
+	$vote_end.play(0)
 	var text = $result/result
 	var an = $result/anim
 	if isTie:
@@ -110,7 +119,7 @@ func result():
 	var isImp = false
 	if nameOfEjected in impasta:
 		isImp = true
-	if !G.confrmejects:
+	if not G.confrmejects:
 		text.text = nameOfEjected + tr("voting.result.we")
 	else:
 		if isImp:

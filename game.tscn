@@ -54,9 +54,6 @@ texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
 texture_disabled = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="time" type="Label" parent="selectAct/emerg"]
 anchor_right = 1.0
@@ -124,6 +121,7 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
+
 [connection signal="pressed" from="selectAct/emerg" to="." method="meeting"]
 [connection signal="pressed" from="selectAct/report" to="." method="report"]
 [connection signal="pressed" from="selectAct/end_game_crew" to="." method="win_crew"]

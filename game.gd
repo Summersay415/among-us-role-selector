@@ -23,9 +23,19 @@ func _process(delta):
 
 func meeting():
 	if left <= 0:
+		var sfx = AudioStreamPlayer.new()
+		sfx.stream = load("res://sounds/emergency_meeting.ogg")
+		sfx.autoplay = true
+		sfx.connect("finished", sfx, "queue_free", [], CONNECT_DEFERRED)
+		get_tree().root.add_child(sfx)
 		get_tree().change_scene("res://vote.tscn")
 
 func report():
+	var sfx = AudioStreamPlayer.new()
+	sfx.stream = load("res://sounds/report.ogg")
+	sfx.autoplay = true
+	sfx.connect("finished", sfx, "queue_free", [], CONNECT_DEFERRED)
+	get_tree().root.add_child(sfx)
 	get_tree().change_scene("res://vote.tscn")
 
 func win_crew():

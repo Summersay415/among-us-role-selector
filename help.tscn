@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Button
-
-func _ready():
-	connect(\"pressed\", get_tree(), \"change_scene\", [\"res://main.tscn\"])
-"
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
@@ -37,10 +30,6 @@ margin_right = -11.3687
 margin_bottom = 45.2691
 text = "tutorial.back"
 clip_text = true
-script = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="title" type="Label" parent="."]
 anchor_left = 0.5
