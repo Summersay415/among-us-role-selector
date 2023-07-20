@@ -111,7 +111,6 @@ func show_role():
 
 func si():
 	ad_loaded = true
-	$AdMob.show_interstitial()
 
 func _ready():
 	TranslationServer.set_locale("ru" if OS.get_locale_language() == "ru" else "en")
