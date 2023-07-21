@@ -29,6 +29,7 @@ func save_settings():
 	cfg.set_value("base", "players", $setup/crewmates_selector.value)
 	cfg.set_value("base", "cdmeeting", $setup/cd_selector.value)
 	cfg.set_value("base", "ce", $setup/cnfrmjctsV.pressed)
+	cfg.set_value("lang", "lang", TranslationServer.get_locale())
 	#player names
 	for i in range(0, $setup/crewmates_selector.value):
 		var name = $setup/players.get_child(i).text
@@ -45,6 +46,7 @@ func load_settings():
 	$setup/crewmates_selector.value = cfg.get_value("base", "players")
 	$setup/cd_selector.value = cfg.get_value("base", "cdmeeting")
 	$setup/cnfrmjctsV.pressed = cfg.get_value("base", "ce")
+	TranslationServer.set_locale(cfg.get_value("lang", "lang", OS.get_locale_language()))
 	for i in $setup/players.get_children():
 		i.queue_free()
 	for i in range(0, $setup/crewmates_selector.value):
