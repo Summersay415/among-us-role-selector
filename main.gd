@@ -7,7 +7,6 @@ enum State {
 	RESTART
 }
 
-var ad_loaded = false
 var crewmates
 var impostors
 var players = [0]
@@ -84,8 +83,9 @@ func process_next_button_callback():
 		state = State.VIEW_PAUSE
 		$role_reveal.stop()
 	if state == State.RESTART:
-		if ad_loaded:
-			$AdMob.show_interstitial()
+		if AdMob.get_is_interstitial_loaded():
+			AdMob.show_interstitial()
+			AdMob.load_interstitial("ca-app-pub-4032583867683331/6835646139")
 		get_tree().change_scene("res://game.tscn")
 
 func show_role():
@@ -111,19 +111,9 @@ func show_role():
 	current += 1
 	$shhhhhh/nextPlayer.text = tr("menu.select.next") + players[clamp(current, 0, players.size())]
 
-func si():
-	ad_loaded = true
-
 func _ready():
 	TranslationServer.set_locale("ru" if OS.get_locale_language() == "ru" else "en")
-	var cfg = ConfigFile.new()
-	cfg.load("user://ads.cfg")
-	if cfg.get_value("ads", "child", false):
-		$AdMob.child_directed = true
-	if not cfg.get_value("ads", "per", false):
-		$AdMob.is_personalized = false
-	$AdMob.connect("interstitial_loaded", self, "si")
-	$AdMob.load_interstitial()
+	AdMob.load_interstitial("ca-app-pub-4032583867683331/6835646139")
 	randomize()
 	$impostor/next.connect("pressed", self, "process_next_button_callback")
 	$crewmate/next.connect("pressed", self, "process_next_button_callback")

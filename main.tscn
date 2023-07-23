@@ -7,9 +7,8 @@
 [ext_resource path="res://impostor.png" type="Texture" id=5]
 [ext_resource path="res://crewmate.png" type="Texture" id=6]
 [ext_resource path="res://setup.tscn" type="PackedScene" id=7]
-[ext_resource path="res://admob-lib/admob.gd" type="Script" id=8]
-[ext_resource path="res://help.tscn" type="PackedScene" id=9]
-[ext_resource path="res://sounds/role_reveal.ogg" type="AudioStream" id=10]
+[ext_resource path="res://help.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/role_reveal.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -45,7 +44,7 @@ rect_min_size = Vector2( 170, 59.5 )
 [node name="load" parent="setup" index="15"]
 rect_min_size = Vector2( 170, 59.5 )
 
-[node name="help" parent="." instance=ExtResource( 9 )]
+[node name="help" parent="." instance=ExtResource( 8 )]
 visible = false
 __meta__ = {
 "_edit_ik_": true
@@ -326,13 +325,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AdMob" type="Node" parent="."]
-script = ExtResource( 8 )
-is_real = true
-interstitial_id = "ca-app-pub-4032583867683331/6835646139"
 
 [node name="role_reveal" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 
 [connection signal="value_changed" from="setup/crewmates_selector" to="." method="setup_players"]
 [connection signal="pressed" from="setup/help" to="help" method="show"]
