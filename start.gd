@@ -29,6 +29,6 @@ func is_child_age():
 func go_to_main():
 	var cfg = ConfigFile.new()
 	cfg.load("user://ads.cfg")
-	AdMob.initialize(true, cfg.get_value("ads", "child", false), "PG" if cfg.get_value("ads", "child", false) else "MA", false)
+	AdMob.initialize(true, cfg.get_value("ads", "child", false), "G" if cfg.get_value("ads", "child", false) else "MA", false)
 	AdMob.request_user_consent()
 	get_tree().change_scene("res://main.tscn")
