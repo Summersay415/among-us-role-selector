@@ -19,7 +19,7 @@ func accept():
 	$privacy.hide()
 
 func is_child_age():
-	var is_child_age_set = $age/age.value < 13
+	var is_child_age_set = $age/age.value < 18
 	cfg.set_value("ads", "child", is_child_age_set)
 	$age.hide()
 	cfg.save("user://ads.cfg")

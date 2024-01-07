@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://font.ttf" type="DynamicFontData" id=2]
@@ -324,7 +324,6 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 
 [node name="role_reveal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
